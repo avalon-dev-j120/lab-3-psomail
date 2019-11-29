@@ -1,17 +1,22 @@
 package windows;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class MainWindow extends JFrame {
 
     private static class Constants {
 
-        static final int WIDTH = 300;
+        static final int WIDTH = 400;
         static final int HEIGHT = 300;
 
     }
 
-    private JButton button;
+    private JButton top;
+    private JButton left;
+    private JButton right;
+    private JButton bottom;
+    private JButton center;
 
     public MainWindow(){
 
@@ -21,9 +26,25 @@ public class MainWindow extends JFrame {
         setLocationByPlatform(true);
       //  setResizable(false);
 
-        button = new JButton("Push me");
+     //   setLayout(null); отключение енеджера компановки и настройка всех параметров самостоятельно
 
-       add(button);
+
+        top = new JButton("top");
+        left = new JButton("left");
+        right = new JButton("right");
+        bottom = new JButton("bottom");
+        center = new JButton("center");
+
+   //     button.setSize(100,30);
+   //     button.setLocation(50,50);
+
+        add(top, BorderLayout.NORTH);
+        add(left, BorderLayout.WEST);
+        add(right, BorderLayout.EAST);
+        add(bottom, BorderLayout.SOUTH);
+        add(center, BorderLayout.CENTER);
+
+
     }
 
 }
