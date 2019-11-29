@@ -26,8 +26,10 @@ public class MainWindow extends JFrame {
         setLocationByPlatform(true);
       //  setResizable(false);
 
-     //   setLayout(null); отключение енеджера компановки и настройка всех параметров самостоятельно
+     //   setLayout(null); отключение менеджера компановки и настройка всех параметров самостоятельно
 
+        LayoutManager layoutManager = new FlowLayout();
+        setLayout(layoutManager);
 
         top = new JButton("top");
         left = new JButton("left");
