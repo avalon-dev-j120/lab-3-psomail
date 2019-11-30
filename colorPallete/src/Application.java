@@ -6,7 +6,9 @@ public class Application {
 
         MainWindow mainWindow = new MainWindow();
 
-        mainWindow.setVisible(true);
+ //       mainWindow.setVisible(true);
+
+        MainWindow.getInstance();
         
     }
 
