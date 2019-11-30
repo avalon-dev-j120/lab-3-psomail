@@ -2,18 +2,58 @@ package windows;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
-public class MainWindow extends JFrame implements ActionListener {
+public class MainWindow extends JFrame {
 
+    private static MainWindow mainwindow = null;
+    private static ColorBox  colorBox = null;
+    private static RightPanel rightPanel= null;
+    private static int colorRed = 125;
+    private static int colorGreen = 125;
+    private static int colorBlue = 125;
 
-     JLabel label;
+    public MainWindow() {
 
-    private static class Constants {
+        mainwindow= this;
 
-        static final int WIDTH = 500;
-        static final int HEIGHT = 200;
+        setTitle("Color Chooser");
+        setSize(500,200);
+
+        this.setLayout(new GridLayout(1,2)); // делим окно на две части
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        colorBox = new ColorBox();
+        Color color = new Color(colorRed, colorGreen, colorBlue);
+        colorBox.setBackground(color);
+
+        rightPanel= new RightPanel();
+        rightPanel.setBackground(new Color(240,240,240));
+
+        add(colorBox);
+        add(rightPanel);
+
+        setVisible(true);
 
     }
+
+    public static MainWindow getInstance(){
+
+        if(mainwindow != null) return mainwindow;
+        else return new MainWindow();
+    }
+}
+
+/*
+    JLabel label;
+
+private static class Constants {
+
+    static final int WIDTH = 500;
+    static final int HEIGHT = 200;
+
+}
 
     private JButton top;
     private JButton left;
@@ -21,35 +61,34 @@ public class MainWindow extends JFrame implements ActionListener {
     private JButton bottom;
     private JButton center;
 
-   @Override
+    @Override
     public void actionPerformed(ActionEvent ae){
 
-       String command = ae.getActionCommand();
-       label.setText("нажали");
-       switch (command){
-           case "top":
-               label.setText("Нажата верхняя кнопка");
-               break;
-           case "bottom":
-               label.setText("Нажата ижняя кнопка");
+        String command = ae.getActionCommand();
+        label.setText("нажали");
+        switch (command){
+            case "top":
+                label.setText("Нажата верхняя кнопка");
                 break;
-           default:
+            case "bottom":
+                label.setText("Нажата нижняя кнопка");
+                break;
+            default:
                 label.setText("не вкурсе что нажато");
-       }
+        }
 
     }
 
-
-    public MainWindow(){
+   public MainWindow(){
 
         setTitle("Color picker");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setSize(Constants.WIDTH, Constants.HEIGHT );
         setLocationByPlatform(true);
         top = new JButton("top");
-      //  setResizable(false);
+        //  setResizable(false);
 
-     //   setLayout(null); отключение менеджера компановки и настройка всех параметров самостоятельно
+        //   setLayout(null); отключение менеджера компановки и настройка всех параметров самостоятельно
 
         LayoutManager layoutManager = new FlowLayout();
         setLayout(layoutManager);
@@ -66,16 +105,16 @@ public class MainWindow extends JFrame implements ActionListener {
 //        right = new JButton("right");
 //        bottom = new JButton("bottom");
 //        center = new JButton("center");
- //       left = new JButton("left");
-   //     button.setSize(100,30);
-   //     button.setLocation(50,50);
+        //       left = new JButton("left");
+        //     button.setSize(100,30);
+        //     button.setLocation(50,50);
 
         add(top, BorderLayout.NORTH);
- //       add(left, BorderLayout.WEST);
+        //       add(left, BorderLayout.WEST);
 //        add(right, BorderLayout.EAST);
 
-          add(bottom, BorderLayout.SOUTH);
- //       add(center, BorderLayout.CENTER);
+        add(bottom, BorderLayout.SOUTH);
+        //       add(center, BorderLayout.CENTER);
 
         label = new Label("ен нажата", JLabel.CENTER);
 
@@ -92,4 +131,5 @@ public class MainWindow extends JFrame implements ActionListener {
     }
 
 
-}
+}*/
+
