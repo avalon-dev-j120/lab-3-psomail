@@ -5,69 +5,40 @@ import java.awt.*;
 
 public class RightPanel extends JPanel  {
 
-    private JPanel sliderPanel;
-
 
     public RightPanel(){
 
-        sliderPanel = new JPanel();
-        sliderPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        JPanel panelRed = new JPanel();
+        formPanel(panelRed, "Red");
 
-        JSlider slider = new JSlider();
-        addSlider(slider, "Test");
-        add(sliderPanel, BorderLayout.NORTH);
+        JPanel panelGreen = new JPanel();
+        formPanel(panelGreen, "Green");
 
-        slider = new JSlider();
-                addSlider(slider, "Test2");
-    //    add(sliderPanel, BorderLayout.CENTER);
+        JPanel panelBlue = new JPanel();
+        formPanel(panelBlue, "Blue");
 
- /*       JSlider sliderRed = new JSlider(0,255,125);
-        sliderRed.setName("Red");
-        sliderRed.setMajorTickSpacing(25);
-        sliderRed.setPaintTicks(true);
-        sliderRed.setPaintLabels(true);
-        sliderRed.addChangeListener(MainWindow.mainwindow);
-
-        JSlider sliderGreen = new JSlider(0,255,125);
-        sliderGreen.setName("Green");
-        sliderGreen.setMajorTickSpacing(25);
-        sliderGreen.setPaintTicks(true);
-        sliderGreen.setPaintLabels(true);
-        sliderGreen.addChangeListener(MainWindow.mainwindow);
-
-        JSlider sliderBlue = new JSlider(0,255,125);
-        sliderBlue.setName("Blue");
-        sliderBlue.setMajorTickSpacing(25);
-        sliderBlue.setPaintTicks(true);
-        sliderBlue.setPaintLabels(true);
-        sliderBlue.addChangeListener(MainWindow.mainwindow);
 
         setLayout(new BorderLayout());
-
-        add(sliderRed, BorderLayout.NORTH);
-        add(sliderGreen, BorderLayout.CENTER);
-        add(sliderBlue, BorderLayout.SOUTH);*/
-
-
-
+        add(panelRed, BorderLayout.NORTH);
+        add(panelGreen, BorderLayout.CENTER);
+        add(panelBlue, BorderLayout.SOUTH);
 
     }
-    public void addSlider(JSlider slider, String description){
 
+    public void formPanel(JPanel panel, String description){
+
+
+        JSlider slider = new JSlider(0,255,125);
+        slider.setName(description);
         slider.setMajorTickSpacing(25);
         slider.setPaintTicks(true);
         slider.setPaintLabels(true);
         slider.addChangeListener(MainWindow.mainwindow);
 
-        JPanel panel = new JPanel();
-        panel.add(slider);
-        panel.add(new JLabel(description));
-        sliderPanel.add(panel);
-
+        panel.setLayout(new BorderLayout());
+        panel.add(new JLabel(description + ":"),BorderLayout.WEST);
+        panel.add(slider, BorderLayout.CENTER);
 
     }
-
-
-
 
 }

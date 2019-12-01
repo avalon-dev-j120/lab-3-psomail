@@ -20,7 +20,7 @@ public class MainWindow extends JFrame implements ChangeListener {
 
         mainwindow= this;
 
-        setTitle("Color Chooser");
+        setTitle("Color Picker");
         setSize(500,200);
 
         this.setLayout(new GridLayout(1,2)); // делим окно на две части
