@@ -1,6 +1,7 @@
 package windows;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
@@ -36,17 +37,15 @@ public class MainWindow extends JFrame implements ChangeListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel display = new JPanel();
+//        display.setBorder(BorderFactory.createEmptyBorder(50,10,10,100));
+     //   display.setBorder(BorderFactory.createEmptyBorder(2,2,2,2));
 
 
+        JPanel buttons = new JPanel(new GridLayout(4,4, -1, -1));
 
-
-
-
-
-        JPanel buttons = new JPanel();
-        buttons.setLayout(new GridLayout(4,4));
         button0 = new JButton("0");
-        button0.setBorder((BorderFactory.createEmptyBorder(3, 3, 3, 3)));
+        button0.setBorder(new LineBorder(Color.RED));
+   
         button1 = new JButton("1");
         button2 = new JButton("2");
         button3 = new JButton("3");
