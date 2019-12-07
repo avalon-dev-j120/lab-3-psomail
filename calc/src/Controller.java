@@ -6,6 +6,7 @@ import javafx.scene.text.Text;
 import javafx.event.ActionEvent;
 
 public class Controller {
+
     @FXML
     private Text output;
     private String operation = "";

@@ -3,9 +3,9 @@
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
@@ -43,11 +43,10 @@
 
     <HBox spacing="10" alignment="CENTER">
         <Button text="0" prefWidth="50" font="$FONT" onAction="#processNum" />
-        <Button text="+" prefWidth="50" font="$FONT" onAction="#processNum" />
+        <Button text="+" prefWidth="50" font="$FONT" onAction="#processOp" />
         <Button text="C" prefWidth="50" font="$FONT" onAction="#processOp" />
         <Button text="=" prefWidth="50" font="$FONT" onAction="#processOp" />
         </HBox>
-
 
 </VBox>
 
