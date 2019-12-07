@@ -58,6 +58,7 @@ public class MainWindow extends JFrame implements ActionListener  {
         display.setLayout(new BorderLayout());
         display.add(displayText, BorderLayout.CENTER);
 
+        Keyboard keyboard = new Keyboard();
         JPanel buttons = new JPanel(new GridLayout(4,4, 5, 5));
         button0 = new JButton("0");
         button0.addActionListener(this::actionPerformed);
