@@ -2,6 +2,7 @@ package windows;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Keyboard extends JFrame {
@@ -24,9 +25,7 @@ public class Keyboard extends JFrame {
     private JButton buttonSplitUp;
     private JButton buttonPoint;
 
-    //public Keyboard() {}
-
-        public JPanel getButtonsPanel() {
+    public JPanel getButtonsPanel() {
 
         JPanel buttonsPanel = new JPanel(new GridLayout(4,4, 5, 5));
 
@@ -50,12 +49,30 @@ public class Keyboard extends JFrame {
         return buttonsPanel;
     }
 
-    public void  formButton(JPanel buttons, JButton button, String typeButton){
+    public JPanel getButtonCalcPanel(){
+
+        JPanel buttonCalcPanel = new JPanel();
+        buttonCalculate = new JButton("=");
+        buttonCalculate.addActionListener(this::actionPerformed);
+        buttonCalculate.setPreferredSize(new Dimension(200,50));
+        buttonCalcPanel.setLayout(new BorderLayout());
+        buttonCalcPanel.add(buttonCalculate, BorderLayout.CENTER);
+
+        return buttonCalcPanel;
+    }
+
+    private void  formButton(JPanel buttonsPanel, JButton button, String typeButton){
 
         button = new JButton(typeButton);
+        button.addActionListener(this::actionPerformed);
         setLayout(new BorderLayout());
-        buttons.add(button,BorderLayout.CENTER);
+        buttonsPanel.add(button,BorderLayout.CENTER);
 
+    }
+
+    public void actionPerformed(ActionEvent e){
+
+        System.out.println("test");
     }
 
 

@@ -58,8 +58,8 @@ public class MainWindow extends JFrame implements ActionListener  {
         display.setLayout(new BorderLayout());
         display.add(displayText, BorderLayout.CENTER);
 
-        Keyboard keyboard = new Keyboard();
-        JPanel buttons = new JPanel(new GridLayout(4,4, 5, 5));
+
+ /*       JPanel buttons = new JPanel(new GridLayout(4,4, 5, 5));
         button0 = new JButton("0");
         button0.addActionListener(this::actionPerformed);
         button1 = new JButton("1");
@@ -109,19 +109,24 @@ public class MainWindow extends JFrame implements ActionListener  {
         buttons.add(buttonCE,BorderLayout.CENTER);
         buttons.add(button0,BorderLayout.CENTER);
         buttons.add(buttonPoint,BorderLayout.CENTER);
-        buttons.add(buttonSplitUp,BorderLayout.CENTER);
+        buttons.add(buttonSplitUp,BorderLayout.CENTER);*/
 
+      /*
         JPanel buttonCalc = new JPanel();
         buttonCalculate = new JButton("=");
         buttonCalculate.addActionListener(this::actionPerformed);
         buttonCalc.setLayout(new BorderLayout());
         buttonCalc.add(buttonCalculate, BorderLayout.CENTER);
-        buttonCalculate.setPreferredSize(new Dimension(200,50));
+        buttonCalculate.setPreferredSize(new Dimension(200,50));*/
 
 
         add(display, BorderLayout.NORTH);
-        add(buttons, BorderLayout.CENTER);
-        add(buttonCalc, BorderLayout.SOUTH);
+
+        add(new Keyboard().getButtonsPanel(), BorderLayout.CENTER);
+        add(new Keyboard().getButtonCalcPanel(), BorderLayout.SOUTH);
+
+     /*   add(buttons, BorderLayout.CENTER);
+        add(buttonCalcPanel, BorderLayout.SOUTH);*/
 
 
         setVisible(true);
