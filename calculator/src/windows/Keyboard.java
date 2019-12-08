@@ -5,7 +5,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 public class Keyboard extends JFrame {
+
+    private String strNumber;
 
     private JButton buttonCalculate;
     private JButton button0;
@@ -71,6 +74,15 @@ public class Keyboard extends JFrame {
     }
 
     public void actionPerformed(ActionEvent e){
+
+        String  sym = e.getActionCommand();
+
+        if (Character.isDigit(sym.charAt(0)) || sym.equals(buttonPoint.getActionCommand())){
+
+            strNumber += sym;
+
+   //         displayText.setText(displayText.getText() + e.getActionCommand());
+        }
 
         System.out.println("test");
     }
