@@ -7,6 +7,7 @@ public class  Keyboard extends JFrame {
     private static String strNumber = "";
     private static Double number1 = 0.0;
     private static String operation = "";
+    private static boolean pointEnable = false;
 
     public JPanel getButtonsPanel() {
 
@@ -54,26 +55,43 @@ public class  Keyboard extends JFrame {
 
         String  sym = e.getActionCommand();
 
-        if (Character.isDigit(sym.charAt(0)) || sym.equals(".")){
+        if (Character.isDigit(sym.charAt(0)) || (sym.equals(".") && !pointEnable)){
+
+            if(operation.equals("+") || operation.equals("-") ||operation.equals("*") || operation.equals("/")) {
+                if (!pointEnable) Display.setDisplayText(Display.displayText, "");
+            }
+
+            if(operation.equals("=")) {
+                Display.setDisplayText(Display.displayText, "");
+                strNumber = "";
+                operation = "";
+            }
+
             Display.setDisplayText(Display.displayText, Display.getDisplayText(Display.displayText) + e.getActionCommand());
             strNumber += sym;
+            if(sym.equals(".")) pointEnable = true;
         }
 
         if( sym.equals("CE")){
             Display.setDisplayText(Display.displayText, "");
             strNumber = "";
+            pointEnable = false;
         }
 
         if (sym.equals("+") || sym.equals("-") || sym.equals("*") || sym.equals("/")){
-            number1 = Double.parseDouble(strNumber);
+            if (!strNumber.equals("")) number1 = Double.parseDouble(strNumber);
             strNumber = "";
             operation = sym;
-            Display.setDisplayText(Display.displayText, "");
+            pointEnable = false;
         }
 
         if (sym.equals("=")){
-            Display.setDisplayText(Display.displayText, Cpu.operation(number1, Double.parseDouble(strNumber), operation).toString());
+            number1 = Cpu.operation(number1, Double.parseDouble(strNumber), operation);
             strNumber = number1.toString();
+            Display.setDisplayText(Display.displayText, strNumber);
+            operation = sym;
+            pointEnable = false;
+            System.out.println(strNumber);
         }
     }
 }

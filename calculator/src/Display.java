@@ -6,7 +6,7 @@ public class Display {
 
     public static JTextField displayText;
 
-    public JPanel getDisplayPanel() {
+    public static JPanel getDisplayPanel() {
 
         JPanel displayPanel = new JPanel();
         displayText = new JTextField();

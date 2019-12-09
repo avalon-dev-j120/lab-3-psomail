@@ -13,7 +13,7 @@ public class MainWindow extends JFrame  {
         setSize(270,330);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        add(new Display().getDisplayPanel(), BorderLayout.NORTH);
+        add(Display.getDisplayPanel(), BorderLayout.NORTH);
         add(new Keyboard().getButtonsPanel(), BorderLayout.CENTER);
         add(new Keyboard().getButtonCalcPanel(), BorderLayout.SOUTH);
 
