@@ -4,9 +4,12 @@ import java.awt.*;
 
 public class Display {
 
+
+
     public static JTextField displayText;
 
     public static JPanel getDisplayPanel() {
+
 
         JPanel displayPanel = new JPanel();
         displayText = new JTextField();
