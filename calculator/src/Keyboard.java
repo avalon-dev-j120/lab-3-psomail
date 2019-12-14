@@ -1,6 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class  Keyboard extends JFrame {
@@ -10,6 +14,11 @@ public class  Keyboard extends JFrame {
     private static String operation = "";
     private static boolean pointEnable = false;
     private KeyListener key;
+
+    private Toolkit toolkit = Toolkit.getDefaultToolkit();
+    private Clipboard clipboard = toolkit.getSystemClipboard();
+    private StringSelection selection;
+
 
     public JPanel getButtonsPanel() {
 
@@ -48,39 +57,50 @@ public class  Keyboard extends JFrame {
 
     private void formButton(JPanel buttonsPanel, String typeButton){
         JButton button = new JButton(typeButton);
-        button.setFont(new Font("Arial", Font.BOLD, 20));
+        button.setFont(new Font("Arial", Font.BOLD, 18));
       //  button.setBorder(new RoundedBorder(10));
         button.addActionListener(this::actionPerformed);
-        button.addKeyListener(key);
+       // button.addKeyListener(key);
+
+  /*      button.addKeyListener(new KeyAdapter() {
+
+            public void keyPressed(KeyEvent e) {
+                System.out.println("dfgdfg");
+            }
+
+        });*/
         setLayout(new BorderLayout());
         buttonsPanel.add(button,BorderLayout.CENTER);
     }
 
     public void actionPerformed(ActionEvent e){
 
-        String  sym = e.getActionCommand();
 
+
+        String  sym = e.getActionCommand();
 
         if (Character.isDigit(sym.charAt(0)) || (sym.equals(".") && !pointEnable)){
 
             if(sym.equals(".")) pointEnable = true;
 
             if((operation.equals("+") || operation.equals("-") ||operation.equals("*") || operation.equals("/")) && !pointEnable && strNumber.equals("")) {
-                 Display.setDisplayText(Display.displayText, "");
+                Display.setDisplayText("");
             }
 
             if(operation.equals("=")) {
-                Display.setDisplayText(Display.displayText, "");
+                Display.setDisplayText("");
                 strNumber = "";
                 operation = "";
             }
 
-            Display.setDisplayText(Display.displayText, Display.getDisplayText(Display.displayText) + e.getActionCommand());
+            Display.setDisplayText(Display.getDisplayText(Display.displayText) + e.getActionCommand());
+
+
             strNumber += sym;
         }
 
         if( sym.equals("CE") || (strNumber.equals("error") && (sym.equals("=") || sym.equals("+") || sym.equals("-") || sym.equals("*") || sym.equals("/")))){
-            Display.setDisplayText(Display.displayText, "");
+            Display.setDisplayText("");
             strNumber = "";
             pointEnable = false;
             number1 = 0.0;
@@ -96,7 +116,11 @@ public class  Keyboard extends JFrame {
 
         if (sym.equals("=") && !operation.equals("") && !strNumber.equals("") && !operation.equals("=")) {
             strNumber = Cpu.operation(number1, Double.parseDouble(strNumber), operation);
-            Display.setDisplayText(Display.displayText, strNumber);
+
+            selection = new StringSelection(strNumber);
+            clipboard.setContents(selection, selection);
+
+            Display.setDisplayText(strNumber);
             operation = sym;
             pointEnable = false;
             number1 = 0.0;

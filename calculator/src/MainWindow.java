@@ -45,7 +45,7 @@ public class MainWindow extends JFrame  {
         rootConstraints.weightx = 1;
         rootConstraints.weighty = 0;
 
-        add(Display.getDisplayPanel(), BorderLayout.NORTH);
+        add(new Display().getDisplayPanel(), BorderLayout.NORTH);
         add(new Keyboard().getButtonsPanel(), BorderLayout.CENTER);
         add(new Keyboard().getButtonCalcPanel(), BorderLayout.SOUTH);
 
